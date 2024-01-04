@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-04 15:59:15.937178",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "task",
+  "project",
+  "reported_time",
+  "column_break_xtwx",
+  "employee",
+  "status",
+  "resolved_time",
+  "section_break_grlm",
+  "bug_or_issue_description"
+ ],
+ "fields": [
+  {
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Task",
+   "options": "Task",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "task.project",
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bug_or_issue_description",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Bug or Issue Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xtwx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "task.custom_assign_to",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nResolved\nPending\nIn Progress\nReview"
+  },
+  {
+   "fieldname": "section_break_grlm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "now",
+   "fieldname": "reported_time",
+   "fieldtype": "Datetime",
+   "label": "Reported Time"
+  },
+  {
+   "fieldname": "resolved_time",
+   "fieldtype": "Datetime",
+   "label": "Resolved Time"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-04 18:29:18.079583",
+ "modified_by": "Administrator",
+ "module": "Bug Tracking",
+ "name": "Bugs or Issue",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

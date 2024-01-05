@@ -7,11 +7,13 @@
  "field_order": [
   "task",
   "project",
-  "reported_time",
+  "reported_on",
+  "total_time",
   "column_break_xtwx",
   "employee",
   "status",
-  "resolved_time",
+  "resolved_on",
+  "resolved_by",
   "section_break_grlm",
   "bug_or_issue_description"
  ],
@@ -62,20 +64,32 @@
    "fieldtype": "Section Break"
   },
   {
-   "default": "now",
-   "fieldname": "reported_time",
-   "fieldtype": "Datetime",
-   "label": "Reported Time"
+   "fieldname": "resolved_by",
+   "fieldtype": "Link",
+   "label": "Resolved By",
+   "options": "User"
   },
   {
-   "fieldname": "resolved_time",
+   "fieldname": "total_time",
+   "fieldtype": "Duration",
+   "is_virtual": 1,
+   "label": "Total Time"
+  },
+  {
+   "default": "now",
+   "fieldname": "reported_on",
    "fieldtype": "Datetime",
-   "label": "Resolved Time"
+   "label": "Reported On"
+  },
+  {
+   "fieldname": "resolved_on",
+   "fieldtype": "Datetime",
+   "label": "Resolved On"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-04 18:29:18.079583",
+ "modified": "2024-01-05 12:15:37.491545",
  "modified_by": "Administrator",
  "module": "Bug Tracking",
  "name": "Bugs or Issue",

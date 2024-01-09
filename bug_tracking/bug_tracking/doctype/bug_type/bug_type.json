@@ -1,27 +1,27 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:{#######}",
- "creation": "2024-01-05 17:15:31.949586",
+ "creation": "2024-01-09 16:36:49.839055",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "asdf"
+  "bug_type"
  ],
  "fields": [
   {
-   "fieldname": "asdf",
+   "fieldname": "bug_type",
    "fieldtype": "Data",
-   "label": "asdf"
+   "label": "Bug Type",
+   "options": "External\nInternal"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-05 17:16:46.189575",
+ "modified": "2024-01-09 16:51:30.225131",
  "modified_by": "Administrator",
  "module": "Bug Tracking",
- "name": "test",
- "naming_rule": "Expression",
+ "name": "Bug Type",
  "owner": "Administrator",
  "permissions": [
   {

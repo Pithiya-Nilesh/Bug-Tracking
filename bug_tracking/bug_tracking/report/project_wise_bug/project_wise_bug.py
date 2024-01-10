@@ -8,9 +8,16 @@ def execute(filters=None):
 	
 	columns = [
 		{
-			"label": "User",
-			"fieldname": "user",
-			"options": "User",
+			"label": "Project",
+			"options": "Project",
+			"fieldname": "project",
+			"fieldtype": "Link",
+			"width": 200,
+		},
+		{
+			"label": "Customer",
+			"fieldname": "customer",
+			"options": "Customer",
 			"fieldtype": "Link",
 			"width": 200,
 		},
@@ -27,7 +34,7 @@ def execute(filters=None):
 	chart = {
 		"type": "donut",
 		"data": {
-			"labels": [row["user"] for row in data],
+			"labels": [row["project"] for row in data],
 			"datasets": [
 				{
 					"values": [row["total_issue"] for row in data]
@@ -41,13 +48,20 @@ def execute(filters=None):
 def get_data(filters, columns):
 	
 	sql = """
-		SELECT custom_assigned_to as user, count(name) as total_issue
+		SELECT custom_assigned_to as user, project, customer, count(name) as total_issue 
 		FROM `tabIssue`
 		WHERE docstatus=0
 		"""
 	
 	if filters.user:
 		sql += f" and custom_assigned_to = '{filters.user}'"
+		columns.append({
+			"label": "User",
+			"options": "User",
+			"fieldname": "user",
+			"fieldtype": "Link",
+			"width": 200,
+		},)
 
 	if filters.project:
 		sql += f" and project = '{filters.project}'"
@@ -66,6 +80,6 @@ def get_data(filters, columns):
 
 		sql += f" and creation BETWEEN '{from_date}' AND '{to_date}'"
 	
-	sql += " GROUP BY custom_assigned_to"
+	sql += " GROUP BY project"
 
 	return columns , frappe.db.sql(sql, as_dict=True)

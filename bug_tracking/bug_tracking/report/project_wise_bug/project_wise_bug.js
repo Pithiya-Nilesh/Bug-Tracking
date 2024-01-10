@@ -30,6 +30,12 @@ frappe.query_reports["Project Wise Bug"] = {
 			fieldname: "to_date",
 			label: "To Date",
 			fieldtype: "Date",
+		},
+		{
+			fieldname: "is_bug",
+			label: "Is Bug",
+			fieldtype: "Check",
+			default: 1
 		}
 	]
 };

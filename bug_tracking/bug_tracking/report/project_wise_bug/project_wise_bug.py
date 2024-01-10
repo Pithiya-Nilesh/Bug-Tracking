@@ -69,6 +69,9 @@ def get_data(filters, columns):
 	if filters.bug_type:
 		sql += f" and custom_bug_type = '{filters.bug_type}'"
 
+	if filters.is_bug:
+		sql += f" and custom_is_bug={filters.is_bug}"
+
 	if filters.from_date and filters.to_date:
 		from datetime import datetime
 

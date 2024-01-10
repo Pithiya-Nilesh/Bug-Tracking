@@ -27,7 +27,7 @@ def execute(filters=None):
 	chart = {
 		"type": "donut",
 		"data": {
-			"labels": [row["user"] for row in data],
+			"labels": [row["user"].split('@')[0] for row in data],
 			"datasets": [
 				{
 					"values": [row["total_issue"] for row in data]
@@ -54,6 +54,9 @@ def get_data(filters, columns):
 
 	if filters.bug_type:
 		sql += f" and custom_bug_type = '{filters.bug_type}'"
+	
+	if filters.is_bug:
+		sql += f" and custom_is_bug={filters.is_bug}"
 
 	if filters.from_date and filters.to_date:
 		from datetime import datetime

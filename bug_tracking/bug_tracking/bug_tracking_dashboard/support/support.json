@@ -1,0 +1,29 @@
+{
+ "cards": [],
+ "charts": [
+  {
+   "chart": "User Wise Bugs",
+   "width": "Full"
+  },
+  {
+   "chart": "Project Wise Bugs",
+   "width": "Half"
+  },
+  {
+   "chart": "Customer Wise Bugs",
+   "width": "Half"
+  }
+ ],
+ "creation": "2024-01-10 15:03:44.785469",
+ "dashboard_name": "Support",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2024-01-10 15:11:13.051505",
+ "modified_by": "Administrator",
+ "module": "Bug Tracking",
+ "name": "Support",
+ "owner": "Administrator"
+}

@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Sanskar Support",
  "links": [],
- "modified": "2024-01-17 14:28:03.572289",
+ "modified": "2024-01-17 15:38:11.342001",
  "modified_by": "Administrator",
  "module": "Bug Tracking",
  "name": "Sanskar Support",
@@ -41,6 +41,9 @@
  "roles": [
   {
    "role": "Client"
+  },
+  {
+   "role": "Customer"
   }
  ],
  "sequence_id": 30.0,

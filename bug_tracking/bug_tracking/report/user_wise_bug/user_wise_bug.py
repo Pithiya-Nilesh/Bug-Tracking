@@ -8,13 +8,6 @@ def execute(filters=None):
 	
 	columns = [
 		{
-			"label": "User",
-			"fieldname": "user",
-			"options": "User",
-			"fieldtype": "Link",
-			"width": 200,
-		},
-		{
 			"label": "Total Issue",
 			"fieldname": "total_issue",
 			"fieldtype": "Data",
@@ -24,10 +17,23 @@ def execute(filters=None):
 	
 	columns, data = get_data(filters, columns)
 
-	chart = {
+	if filters.group_by == "User" and filters.user:
+		chart = {
+			"type": "donut",
+			"data": {
+				"labels": [row["user"].split('@')[0] for row in data],
+				"datasets": [
+					{
+						"values": [row["total_issue"] for row in data]
+					}
+				]
+			}
+		}
+	elif filters.group_by == "Project" and filters.project:
+		chart = {
 		"type": "donut",
 		"data": {
-			"labels": [row["user"].split('@')[0] for row in data],
+			"labels": [row["project"] for row in data],
 			"datasets": [
 				{
 					"values": [row["total_issue"] for row in data]
@@ -35,15 +41,18 @@ def execute(filters=None):
 			]
 		}
 	}
+	
+	else:
+		chart = {}
 
 	return columns, data, None, chart
 
 def get_data(filters, columns):
 	
 	sql = """
-		SELECT custom_assigned_to as user, count(name) as total_issue
+		SELECT custom_assigned_to as user, project, count(name) as total_issue
 		FROM `tabIssue`
-		WHERE docstatus=0
+		WHERE docstatus=0 and bug_type = "External"
 		"""
 	
 	if filters.user:
@@ -69,6 +78,26 @@ def get_data(filters, columns):
 
 		sql += f" and creation BETWEEN '{from_date}' AND '{to_date}'"
 	
-	sql += " GROUP BY custom_assigned_to"
+
+	if filters.group_by:
+		if filters.group_by == "User":
+			sql += f" GROUP BY custom_assigned_to"
+			columns.insert(0, {
+			"label": "User",
+			"fieldname": "user",
+			"options": "User",
+			"fieldtype": "Link",
+			"width": 200,
+			})
+		if filters.group_by == "Project":
+			sql += f" GROUP BY project"
+			columns.insert(0, {
+			"label": "Project",
+			"fieldname": "project",
+			"options": "Project",
+			"fieldtype": "Link",
+			"width": 200,
+			})
+	# sql += " GROUP BY custom_assigned_to"
 
 	return columns , frappe.db.sql(sql, as_dict=True)

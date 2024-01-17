@@ -22,11 +22,42 @@ def execute(filters=None):
 			"width": 200,
 		},
 		{
+			"label": "Open Issue",
+			"fieldname": "open_issue",
+			"fieldtype": "Data",
+			"width": 100,
+		},
+		{
+			"label": "Closed Issue",
+			"fieldname": "closed_issues",
+			"fieldtype": "Data",
+			"width": 125,
+		},
+		{
+			"label": "Resolved Issue",
+			"fieldname": "resolved_issues",
+			"fieldtype": "Data",
+			"width": 125,
+		},
+		{
+			"label": "On Hold Issue",
+			"fieldname": "on_hold_issues",
+			"fieldtype": "Data",
+			"width": 125,
+		},
+		{
+			"label": "Replied Issue",
+			"fieldname": "replied_issues",
+			"fieldtype": "Data",
+			"width": 125,
+		},
+		{
 			"label": "Total Issue",
 			"fieldname": "total_issue",
 			"fieldtype": "Data",
-			"width": 200,
+			"width": 100,
 		}
+
 	]
 	
 	columns, data = get_data(filters, columns)
@@ -48,7 +79,12 @@ def execute(filters=None):
 def get_data(filters, columns):
 	
 	sql = """
-		SELECT custom_assigned_to as user, project, customer, count(name) as total_issue 
+		SELECT custom_assigned_to as user, project, customer, count(name) as total_issue, 
+		SUM(CASE WHEN status = 'Open' THEN 1 ELSE 0 END) AS open_issues,
+    	SUM(CASE WHEN status = 'Closed' THEN 1 ELSE 0 END) AS closed_issues,
+		SUM(CASE WHEN status = 'Resolved' THEN 1 ELSE 0 END) AS resolved_issues,
+		SUM(CASE WHEN status = 'On Hold' THEN 1 ELSE 0 END) AS on_hold_issues,
+		SUM(CASE WHEN status = 'Replied' THEN 1 ELSE 0 END) AS replied_issues
 		FROM `tabIssue`
 		WHERE docstatus=0
 		"""

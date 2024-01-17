@@ -1,0 +1,78 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"M2U7KkbPfn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Issue\",\"col\":3}},{\"id\":\"M8Q4khcT9M\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"_6AzvDMHTE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"mU1HogDW8K\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"XrRTYEywDK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Wise Issue\",\"col\":3}},{\"id\":\"aoBXolCJeE\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"__xwgEEb57\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Issue\",\"col\":6}},{\"id\":\"spmrFTJ8b4\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Project\",\"col\":6}},{\"id\":\"NkrroT8Y06\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Task\",\"col\":12}}]",
+ "creation": "2023-09-19 18:37:32.509879",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "share-people",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Sanskar Support",
+ "links": [],
+ "modified": "2024-01-17 14:28:03.572289",
+ "modified_by": "Administrator",
+ "module": "Bug Tracking",
+ "name": "Sanskar Support",
+ "number_cards": [],
+ "owner": "foram@sanskartechnolab.com",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Task",
+   "label": "Task",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Issue",
+   "label": "Issue",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Project",
+   "label": "Project",
+   "quick_list_filter": "[]"
+  }
+ ],
+ "roles": [
+  {
+   "role": "Client"
+  }
+ ],
+ "sequence_id": 30.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Issue",
+   "link_to": "Issue",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Task",
+   "link_to": "Task",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Project Wise Issue",
+   "link_to": "Project Wise Issue",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Project",
+   "link_to": "Project",
+   "type": "DocType"
+  }
+ ],
+ "title": "Sanskar Support"
+}

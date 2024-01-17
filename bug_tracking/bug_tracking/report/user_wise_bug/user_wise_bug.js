@@ -35,6 +35,13 @@ frappe.query_reports["User Wise Bug"] = {
 		label: "Is Bug",
 		fieldtype: "Check",
 		default: 1
+	},
+	{
+		fieldname: "group_by",
+		label: "Group By",
+		fieldtype: "Select",
+		options: "Project\nUser",
+		default: "Project"
 	}
 
 	]

@@ -1,20 +1,8 @@
 // Copyright (c) 2024, Sanskar Technolab and contributors
 // For license information, please see license.txt
 
-frappe.query_reports["Project Wise Bug"] = {
+frappe.query_reports["Project Wise Issue"] = {
 	"filters": [
-		{
-			fieldname: "user",
-			label: __("User"),
-			fieldtype: "Link",
-			options: "User",
-		},
-		{
-			fieldname: "bug_type",
-			label: "Bug Type",
-			fieldtype: "Link",
-			options: "Bug Type",
-		},
 		{
 			fieldname: "project",
 			label: "Project",
@@ -35,8 +23,7 @@ frappe.query_reports["Project Wise Bug"] = {
 			fieldname: "is_bug",
 			label: "Is Bug",
 			fieldtype: "Check",
-			default: 1
+			default: 0
 		}
 	]
 };
-

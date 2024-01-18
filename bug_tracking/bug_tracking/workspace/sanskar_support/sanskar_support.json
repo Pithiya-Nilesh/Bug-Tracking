@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"M2U7KkbPfn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Issue\",\"col\":3}},{\"id\":\"M8Q4khcT9M\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"_6AzvDMHTE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"mU1HogDW8K\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"XrRTYEywDK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Wise Issue\",\"col\":3}},{\"id\":\"aoBXolCJeE\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"__xwgEEb57\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Issue\",\"col\":6}},{\"id\":\"spmrFTJ8b4\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Project\",\"col\":6}},{\"id\":\"NkrroT8Y06\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Task\",\"col\":12}}]",
+ "content": "[{\"id\":\"MhRTRuKPBy\",\"type\":\"header\",\"data\":{\"text\":\"<br>\",\"col\":12}},{\"id\":\"M2U7KkbPfn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Issue\",\"col\":3}},{\"id\":\"M8Q4khcT9M\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"_6AzvDMHTE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"mU1HogDW8K\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ZXi1DS4q1L\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"XrRTYEywDK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Wise Issue\",\"col\":7}},{\"id\":\"tLBoil-u0e\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Wise Task\",\"col\":7}},{\"id\":\"aoBXolCJeE\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"__xwgEEb57\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Issue\",\"col\":6}},{\"id\":\"spmrFTJ8b4\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Project\",\"col\":6}},{\"id\":\"NkrroT8Y06\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Task\",\"col\":12}}]",
  "creation": "2023-09-19 18:37:32.509879",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Sanskar Support",
  "links": [],
- "modified": "2024-01-17 15:38:11.342001",
+ "modified": "2024-01-18 12:14:00.123132",
  "modified_by": "Administrator",
  "module": "Bug Tracking",
  "name": "Sanskar Support",
@@ -54,6 +54,13 @@
    "label": "Issue",
    "link_to": "Issue",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Project Wise Task",
+   "link_to": "Project Wise Task",
+   "type": "Report"
   },
   {
    "color": "Grey",

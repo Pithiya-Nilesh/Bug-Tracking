@@ -27,7 +27,10 @@ app_license = "mit"
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-fixtures = ["Bug Type"]
+fixtures = [
+    {"dt": "DocPerm", "filters": [["name", "in", ["Bug Tracking"]]]},
+    {"dt": "Bug Type"}
+]
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}

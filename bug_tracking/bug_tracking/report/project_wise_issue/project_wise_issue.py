@@ -23,7 +23,7 @@ def execute(filters=None):
 		},
 		{
 			"label": "Open Issue",
-			"fieldname": "open_issue",
+			"fieldname": "open_issues",
 			"fieldtype": "Data",
 			"width": 100,
 		},
@@ -62,19 +62,29 @@ def execute(filters=None):
 	
 	columns, data = get_data(filters, columns)
 
-	chart = {
-		"type": "donut",
-		"data": {
-			"labels": [row["project"] for row in data],
-			"datasets": [
-				{
-					"values": [row["total_issue"] for row in data]
-				}
-			]
+	if filters.project and data:
+		chart_data = data[0]
+		chart = {
+			'type': 'donut', 
+			'data': {
+				'labels': ["Open", "Closed", "Resolved", "On Hold", "Replied"], 
+				'datasets': [{'values': [chart_data["open_issues"], chart_data["closed_issues"], chart_data["resolved_issues"], chart_data["on_hold_issues"], chart_data["replied_issues"]]}]}}
+		
+		return columns, data, None, chart
+	
+	else:
+		chart = {
+			"type": "donut",
+			"data": {
+				"labels": [row["project"] for row in data],
+				"datasets": [
+					{
+						"values": [row["total_issue"] for row in data]
+					}
+				]
+			}
 		}
-	}
-
-	return columns, data, None, chart
+		return columns, data, None, chart
 
 def get_data(filters, columns):
 	

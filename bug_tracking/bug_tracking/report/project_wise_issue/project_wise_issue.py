@@ -122,7 +122,7 @@ def get_data(filters, columns):
 		from datetime import datetime
 
 		input_date = datetime.strptime(filters.from_date, "%Y-%m-%d")
-		from_date = input_date.strftime("%Y-%m-%d %H:%M:%S.%f")	
+		from_date = input_date.strftime("%Y-%m-%d %H:%M:%S.%f")
 
 		to_date1 = datetime.strptime(filters.to_date, "%Y-%m-%d")
 		to_date = to_date1.strftime("%Y-%m-%d %H:%M:%S.%f")
@@ -131,11 +131,14 @@ def get_data(filters, columns):
 	
 	sql += " GROUP BY project"
 
-	# Retrieve the list of projects that the user has permission to access
-	allowed_projects = frappe.get_all('User Permission', filters={'user': frappe.session.user, 'allow': "Project"}, fields=['for_value'], pluck='for_value')
+	# # Retrieve the list of projects that the user has permission to access
+	# allowed_projects = frappe.get_all('User Permission', filters={'user': frappe.session.user, 'allow': "Project"}, fields=['for_value'], pluck='for_value')
 		
-	# Filter the result to include only allowed projects
-	result = [item for item in frappe.db.sql(sql, as_dict=True, debug=0) if item['project'] in allowed_projects]
+	# # Filter the result to include only allowed projects
+	# result = [item for item in frappe.db.sql(sql, as_dict=True, debug=0) if item['project'] in allowed_projects]
+
+	allowed_customers = frappe.get_all('User Permission', filters={'user': frappe.session.user, 'allow': "Customer"}, fields=['for_value'], pluck='for_value')
+	result = [item for item in frappe.db.sql(sql, as_dict=True, debug=0) if item['customer'] in allowed_customers]
 
 	return columns, result
 

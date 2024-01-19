@@ -131,4 +131,11 @@ def get_data(filters, columns):
 	
 	sql += " GROUP BY project"
 
-	return columns , frappe.db.sql(sql, as_dict=True)
+	# Retrieve the list of projects that the user has permission to access
+	allowed_projects = frappe.get_all('User Permission', filters={'user': frappe.session.user, 'allow': "Project"}, fields=['for_value'], pluck='for_value')
+		
+	# Filter the result to include only allowed projects
+	result = [item for item in frappe.db.sql(sql, as_dict=True, debug=0) if item['project'] in allowed_projects]
+
+	return columns, result
+

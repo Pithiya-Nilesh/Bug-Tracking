@@ -97,22 +97,50 @@ def execute(filters=None):
 		
 		return columns, data, None, chart
 
-def get_data(filters):
-	sql = f"""
+# def get_data(filters):
+# 	sql = f"""
+# 		SELECT project, count(name) as total_task, 
+# 		SUM(CASE WHEN status = 'Open' THEN 1 ELSE 0 END) AS open,
+#     	SUM(CASE WHEN status = 'Working' THEN 1 ELSE 0 END) AS working,
+# 		SUM(CASE WHEN status = 'Pending Review' THEN 1 ELSE 0 END) AS pending_review,
+# 		SUM(CASE WHEN status = 'Overdue' THEN 1 ELSE 0 END) AS overdue,
+# 		SUM(CASE WHEN status = 'Completed' THEN 1 ELSE 0 END) AS completed,
+# 		SUM(CASE WHEN status = 'Cancelled' THEN 1 ELSE 0 END) AS cancelled
+# 		FROM `tabTask`
+# 		"""
+	
+	
+# 	if filters.project:
+# 		sql += f" WHERE project = '{filters.project}'"
+
+# 	sql += " GROUP BY project"
+	
+# 	return frappe.db.sql(sql, as_dict=True)
+	
+
+def get_data(filters, user=frappe.session.user):
+	# Check permission to access 'tabTask'
+	
+	sql = """
 		SELECT project, count(name) as total_task, 
 		SUM(CASE WHEN status = 'Open' THEN 1 ELSE 0 END) AS open,
-    	SUM(CASE WHEN status = 'Working' THEN 1 ELSE 0 END) AS working,
+		SUM(CASE WHEN status = 'Working' THEN 1 ELSE 0 END) AS working,
 		SUM(CASE WHEN status = 'Pending Review' THEN 1 ELSE 0 END) AS pending_review,
 		SUM(CASE WHEN status = 'Overdue' THEN 1 ELSE 0 END) AS overdue,
 		SUM(CASE WHEN status = 'Completed' THEN 1 ELSE 0 END) AS completed,
 		SUM(CASE WHEN status = 'Cancelled' THEN 1 ELSE 0 END) AS cancelled
 		FROM `tabTask`
-		"""
-	
-	
+	"""
+
 	if filters.project:
 		sql += f" WHERE project = '{filters.project}'"
 
 	sql += " GROUP BY project"
-	
-	return frappe.db.sql(sql, as_dict=True)
+
+	# Retrieve the list of projects that the user has permission to access
+	allowed_projects = frappe.get_all('User Permission', filters={'user': user, 'allow': "Project"}, fields=['for_value'], pluck='for_value')
+		
+	# Filter the result to include only allowed projects
+	result = [item for item in frappe.db.sql(sql, as_dict=True, debug=0) if item['project'] in allowed_projects]
+
+	return result
